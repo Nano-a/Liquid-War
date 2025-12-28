@@ -8,65 +8,65 @@
 ## 🎯 Phase 1 : Initialisation (Abderrahman AJINOU)
 
 ### Étape 1.1 : Vérification de l'état initial
-- [ ] Ouvrir le terminal dans `/home/ajinou/Bureau/Projet CPOO/liquid-war-upc`
-- [ ] Exécuter : `git status`
-- [ ] Vérifier que vous êtes sur la branche `main`
-- [ ] Vérifier que le dépôt est à jour : `git pull origin main`
+- [x] Ouvrir le terminal dans `/home/ajinou/Bureau/Projet CPOO/liquid-war-upc`
+- [x] Exécuter : `git status`
+- [x] Vérifier que vous êtes sur la branche `main`
+- [x] Vérifier que le dépôt est à jour : `git pull origin main`
 
 ### Étape 1.2 : Création de la branche develop
-- [ ] Rester sur `main`
-- [ ] Exécuter : `git checkout -b develop`
-- [ ] Exécuter : `git push -u origin develop`
-- [ ] **Branche actuelle** : `develop`
-- [ ] **Action** : Création de la branche de développement principale
+- [x] Rester sur `main`
+- [x] Exécuter : `git checkout -b develop`
+- [x] Exécuter : `git push -u origin develop`
+- [x] **Branche actuelle** : `develop`
+- [x] **Action** : Création de la branche de développement principale
 
 ---
 
-## 🎯 Phase 2 : Core Game - Model Layer (Ahmed CHABIRA-MOUNCEF)
+## 🎯 Phase 2 : Core Game - Model Layer (Abderrahman AJINOU)
 
 ### Étape 2.1 : Préparation pour Model Entities
-- [ ] **Changer de branche** : `git checkout develop`
-- [ ] **Pull** : `git pull origin develop`
-- [ ] **Créer branche** : `git checkout -b feature/model-entities`
-- [ ] **Branche actuelle** : `feature/model-entities`
-- [ ] **Branche source** : `develop`
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Créer branche** : `git checkout -b feature/model-entities`
+- [x] **Branche actuelle** : `feature/model-entities`
+- [x] **Branche source** : `develop`
 
 ### Étape 2.2 : Créer Fighter.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
-- [ ] **Code à écrire** : Classe `Fighter` avec propriétés de base (position, équipe, santé, couleur)
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
-- [ ] **Message commit** : `"Feature: Entité Fighter avec propriétés de base"`
-- [ ] **Push** : `git commit -m "Feature: Entité Fighter avec propriétés de base"` puis `git push origin feature/model-entities`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
+- [x] **Code à écrire** : Classe `Fighter` avec propriétés de base (position, équipe, santé, couleur)
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
+- [x] **Message commit** : `"Feature: Entité Fighter avec propriétés de base"`
+- [x] **Push** : `git commit -m "Feature: Entité Fighter avec propriétés de base"` puis `git push origin feature/model-entities`
 
 ### Étape 2.3 : Créer Cursor.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
-- [ ] **Code à écrire** : Classe `Cursor` pour contrôle des équipes (position, équipe, état)
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
-- [ ] **Message commit** : `"Feature: Entité Cursor pour contrôle équipes"`
-- [ ] **Push** : `git commit -m "Feature: Entité Cursor pour contrôle équipes"` puis `git push origin feature/model-entities`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
+- [x] **Code à écrire** : Classe `Cursor` pour contrôle des équipes (position, équipe, état)
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
+- [x] **Message commit** : `"Feature: Entité Cursor pour contrôle équipes"`
+- [x] **Push** : `git commit -m "Feature: Entité Cursor pour contrôle équipes"` puis `git push origin feature/model-entities`
 
 ### Étape 2.4 : Créer MapLoader.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
-- [ ] **Code à écrire** : Classe `MapLoader` pour charger les cartes BMP depuis les ressources
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
-- [ ] **Message commit** : `"Feature: Chargement de cartes BMP"`
-- [ ] **Push** : `git commit -m "Feature: Chargement de cartes BMP"` puis `git push origin feature/model-entities`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
+- [x] **Code à écrire** : Classe `MapLoader` pour charger les cartes BMP depuis les ressources
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
+- [x] **Message commit** : `"Feature: Chargement de cartes BMP"`
+- [x] **Push** : `git commit -m "Feature: Chargement de cartes BMP"` puis `git push origin feature/model-entities`
 
-### Étape 2.5 : Créer GameState.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
-- [ ] **Code à écrire** : Classe `GameState` thread-safe pour gérer l'état du jeu
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
-- [ ] **Message commit** : `"Feature: GameState thread-safe"`
-- [ ] **Push** : `git commit -m "Feature: GameState thread-safe"` puis `git push origin feature/model-entities`
+###Étape 2.5 : Créer GameState.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
+- [x] **Code à écrire** : Classe `GameState` thread-safe pour gérer l'état du jeu
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
+- [x] **Message commit** : `"Feature: GameState thread-safe"`
+- [x] **Push** : `git commit -m "Feature: GameState thread-safe"` puis `git push origin feature/model-entities`
 
 ### Étape 2.6 : Merge vers develop
-- [ ] **Changer de branche** : `git checkout develop`
-- [ ] **Pull** : `git pull origin develop`
-- [ ] **Merger** : `git merge --no-ff feature/model-entities`
-- [ ] **Push** : `git push origin develop`
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Merger** : `git merge --no-ff feature/model-entities`
+- [x] **Push** : `git push origin develop`
 - [ ] **Supprimer branche locale** : `git branch -d feature/model-entities`
 - [ ] **Supprimer branche distante** : `git push origin --delete feature/model-entities`
-- [ ] **Branche actuelle** : `develop`
+- [x] **Branche actuelle** : `develop`
 
 ---
 
@@ -111,7 +111,7 @@
 
 ---
 
-## 🎯 Phase 4 : Design Patterns - Strategy Pattern IA (Ahmed CHABIRA-MOUNCEF)
+## 🎯 Phase 4 : Design Patterns - Strategy Pattern IA (Abderrahman AJINOU)
 
 ### Étape 4.1 : Préparation pour AI System
 - [ ] **Changer de branche** : `git checkout develop`
@@ -166,7 +166,7 @@
 
 ---
 
-## 🎯 Phase 5 : Design Patterns - Autres Patterns (Abderrahman AJINOU)
+## 🎯 Phase 5 : Design Patterns - Autres Patterns (Ahmed CHABIRA-MOUNCEF)
 
 ### Étape 5.1 : Préparation pour Design Patterns
 - [ ] **Changer de branche** : `git checkout develop`
