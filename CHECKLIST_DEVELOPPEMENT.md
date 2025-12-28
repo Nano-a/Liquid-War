@@ -73,45 +73,45 @@
 ## 🎯 Phase 3 : Core Game - Service Layer (Abderrahman AJINOU)
 
 ### Étape 3.1 : Préparation pour Gradient System
-- [ ] **Changer de branche** : `git checkout develop`
-- [ ] **Pull** : `git pull origin develop`
-- [ ] **Créer branche** : `git checkout -b feature/gradient-system`
-- [ ] **Branche actuelle** : `feature/gradient-system`
-- [ ] **Branche source** : `develop`
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Créer branche** : `git checkout -b feature/gradient-system`
+- [x] **Branche actuelle** : `feature/gradient-system`
+- [x] **Branche source** : `develop`
 
 ### Étape 3.2 : Créer PathfindingEngine.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
-- [ ] **Code à écrire** : Classe `PathfindingEngine` avec système de gradient BFS
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
-- [ ] **Message commit** : `"Feature: Système de gradient BFS"`
-- [ ] **Push** : `git commit -m "Feature: Système de gradient BFS"` puis `git push origin feature/gradient-system`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
+- [x] **Code à écrire** : Classe `PathfindingEngine` avec système de gradient BFS
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
+- [x] **Message commit** : `"Feature: Système de gradient BFS"`
+- [x] **Push** : `git commit -m "Feature: Système de gradient BFS"` puis `git push origin feature/gradient-system`
 
 ### Étape 3.3 : Créer MovementEngine.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
-- [ ] **Code à écrire** : Classe `MovementEngine` pour mouvement des fighters suivant le gradient
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
-- [ ] **Message commit** : `"Feature: Mouvement fighters suivant gradient"`
-- [ ] **Push** : `git commit -m "Feature: Mouvement fighters suivant gradient"` puis `git push origin feature/gradient-system`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
+- [x] **Code à écrire** : Classe `MovementEngine` pour mouvement des fighters suivant le gradient
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
+- [x] **Message commit** : `"Feature: Mouvement fighters suivant gradient"`
+- [x] **Push** : `git commit -m "Feature: Mouvement fighters suivant gradient"` puis `git push origin feature/gradient-system`
 
 ### Étape 3.4 : Créer CombatEngine.java
-- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
-- [ ] **Code à écrire** : Classe `CombatEngine` pour système de combat et conversion d'équipes
-- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
-- [ ] **Message commit** : `"Feature: Système de combat et conversion équipes"`
-- [ ] **Push** : `git commit -m "Feature: Système de combat et conversion équipes"` puis `git push origin feature/gradient-system`
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
+- [x] **Code à écrire** : Classe `CombatEngine` pour système de combat et conversion d'équipes
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
+- [x] **Message commit** : `"Feature: Système de combat et conversion équipes"`
+- [x] **Push** : `git commit -m "Feature: Système de combat et conversion équipes"` puis `git push origin feature/gradient-system`
 
 ### Étape 3.5 : Merge vers develop
-- [ ] **Changer de branche** : `git checkout develop`
-- [ ] **Pull** : `git pull origin develop`
-- [ ] **Merger** : `git merge --no-ff feature/gradient-system`
-- [ ] **Push** : `git push origin develop`
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Merger** : `git merge --no-ff feature/gradient-system`
+- [x] **Push** : `git push origin develop`
 - [ ] **Supprimer branche locale** : `git branch -d feature/gradient-system`
 - [ ] **Supprimer branche distante** : `git push origin --delete feature/gradient-system`
-- [ ] **Branche actuelle** : `develop`
+- [x] **Branche actuelle** : `develop`
 
 ---
 
-## 🎯 Phase 4 : Design Patterns - Strategy Pattern IA (Abderrahman AJINOU)
+## 🎯 Phase 4 : Design Patterns - Strategy Pattern IA (Ahmed CHABIRA-MOUNCEF)
 
 ### Étape 4.1 : Préparation pour AI System
 - [ ] **Changer de branche** : `git checkout develop`
@@ -225,7 +225,7 @@
 
 ---
 
-## 🎯 Phase 6 : Interface Utilisateur - Système de Menus (Abderrahman AJINOU)
+## 🎯 Phase 6 : Interface Utilisateur - Système de Menus (Abderrahman AJINOU) ⭐ IMPORTANT
 
 ### Étape 6.1 : Préparation pour Menu System
 - [ ] **Changer de branche** : `git checkout develop`
@@ -314,7 +314,7 @@
 
 ---
 
-## 🎯 Phase 8 : Fonctionnalités Avancées - Sélection Carte (Abderrahman AJINOU)
+## 🎯 Phase 8 : Fonctionnalités Avancées - Sélection Carte (Abderrahman AJINOU) ⭐ IMPORTANT
 
 ### Étape 8.1 : Préparation pour Map Selection
 - [ ] **Changer de branche** : `git checkout develop`
@@ -404,7 +404,7 @@
 
 ---
 
-## 🎯 Phase 10 : Améliorations Visuelles - Rendu et Effets (Abderrahman AJINOU)
+## 🎯 Phase 10 : Améliorations Visuelles - Rendu et Effets (Abderrahman AJINOU) ⭐ IMPORTANT
 
 ### Étape 10.1 : Préparation pour Visual Improvements
 - [ ] **Changer de branche** : `git checkout develop`
@@ -539,7 +539,7 @@
 
 ---
 
-## 🎯 Phase 13 : Collisions et IA - Correction IA Bloquée (Ahmed CHABIRA-MOUNCEF)
+## 🎯 Phase 13 : Collisions et IA - Correction IA Bloquée (Abderrahman AJINOU) ⭐ IMPORTANT
 
 ### Étape 13.1 : Préparation pour AI Stuck Fix
 - [ ] **Changer de branche** : `git checkout develop`
@@ -665,7 +665,7 @@
 
 ---
 
-## 🎯 Phase 16 : Optimisations - Parallélisation (Abderrahman AJINOU)
+## 🎯 Phase 16 : Optimisations - Parallélisation (Abderrahman AJINOU) ⭐ CRITIQUE
 
 ### Étape 16.1 : Préparation pour Parallelization
 - [ ] **Changer de branche** : `git checkout develop`
@@ -795,7 +795,7 @@
 
 ---
 
-## 🎯 Phase 19 : Release Finale - Préparation (Abderrahman AJINOU)
+## 🎯 Phase 19 : Release Finale - Préparation (Abderrahman AJINOU) ⭐ CRITIQUE
 
 ### Étape 19.1 : Préparation Release
 - [ ] **Changer de branche** : `git checkout develop`
