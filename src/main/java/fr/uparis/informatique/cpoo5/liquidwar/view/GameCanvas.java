@@ -41,7 +41,7 @@ import fr.uparis.informatique.cpoo5.liquidwar.view.input.PlayerCursorController;
  * - Logique de jeu (updateLogic)
  * - Initialisation (délégué à GameInitializationManager)
  * - Configuration (délégué à GameCanvasConfiguration)
- * - IA (délégué à AIController)
+ * - IA 
  * 
  * Responsabilités principales :
  * - Coordination entre les différents composants
