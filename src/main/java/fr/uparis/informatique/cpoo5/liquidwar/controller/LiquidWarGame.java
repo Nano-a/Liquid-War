@@ -1,4 +1,4 @@
- package fr.uparis.informatique.cpoo5.liquidwar.controller;
+package fr.uparis.informatique.cpoo5.liquidwar.controller;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
