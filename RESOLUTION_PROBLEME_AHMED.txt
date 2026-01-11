@@ -1,0 +1,76 @@
+🚨 AHMED - RÉSOLUTION DU PROBLÈME DE MERGE
+
+════════════════════════════════════════════════════════
+❌ LE PROBLÈME :
+════════════════════════════════════════════════════════
+
+Tu as fait :
+  git checkout develop
+  git pull origin develop
+
+Maintenant Git dit que develop est "ahead of origin/develop by 5 commits"
+et te propose de pusher.
+
+MAIS tu ne dois PAS pusher develop maintenant !
+
+════════════════════════════════════════════════════════
+✅ LA SOLUTION :
+════════════════════════════════════════════════════════
+
+Tu dois ANNULER ce que tu as fait et recommencer :
+
+1️⃣  ANNULER (copie-colle ces commandes) :
+─────────────────────────────────────────────────────
+
+git reset --hard origin/develop
+
+⚠️  Cela va ANNULER tout ce que tu as fait localement
+    et remettre develop comme sur GitLab.
+
+─────────────────────────────────────────────────────
+
+2️⃣  RECOMMENCER CORRECTEMENT :
+─────────────────────────────────────────────────────
+
+git checkout develop
+git pull origin develop
+git log --oneline -1
+
+⚠️  Tu DOIS voir : fd67134 - Merge feature/map-selection
+
+git checkout -b feature/time-mode
+
+⚠️  Maintenant tu es sur ta NOUVELLE branche !
+
+─────────────────────────────────────────────────────
+
+3️⃣  FAIRE TON TRAVAIL :
+─────────────────────────────────────────────────────
+
+# Copie/Écris ton code pour Phase 9...
+
+git add <ton-fichier>
+git commit -m "Feature: Menu sélection mode temps"
+git push origin feature/time-mode
+
+# Continue tes commits...
+
+─────────────────────────────────────────────────────
+
+4️⃣  À LA FIN, MERGER DANS DEVELOP :
+─────────────────────────────────────────────────────
+
+git checkout develop
+git pull origin develop
+git merge --no-ff feature/time-mode
+git push origin develop
+
+════════════════════════════════════════════════════════
+🔑 CE QU'IL NE FAUT PAS FAIRE :
+════════════════════════════════════════════════════════
+
+❌ NE PAS faire "git push" sur develop maintenant !
+❌ NE PAS merger develop dans ta branche !
+✅ TOUJOURS merger TA BRANCHE dans develop (pas l'inverse)
+
+════════════════════════════════════════════════════════

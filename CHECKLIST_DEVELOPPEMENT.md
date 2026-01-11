@@ -1,0 +1,883 @@
+# ✅ Checklist de Développement - Liquid War
+
+**Guide pas-à-pas chronologique pour développer le projet**
+
+
+---
+
+## 🎯 Phase 1 : Initialisation (Abderrahman AJINOU)
+
+### Étape 1.1 : Vérification de l'état initial
+- [x] Ouvrir le terminal dans `/home/ajinou/Bureau/Projet CPOO/liquid-war-upc`
+- [x] Exécuter : `git status`
+- [x] Vérifier que vous êtes sur la branche `main`
+- [x] Vérifier que le dépôt est à jour : `git pull origin main`
+
+### Étape 1.2 : Création de la branche develop
+- [x] Rester sur `main`
+- [x] Exécuter : `git checkout -b develop`
+- [x] Exécuter : `git push -u origin develop`
+- [x] **Branche actuelle** : `develop`
+- [x] **Action** : Création de la branche de développement principale
+
+---
+
+## 🎯 Phase 2 : Core Game - Model Layer (Abderrahman AJINOU)
+
+### Étape 2.1 : Préparation pour Model Entities
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Créer branche** : `git checkout -b feature/model-entities`
+- [x] **Branche actuelle** : `feature/model-entities`
+- [x] **Branche source** : `develop`
+
+### Étape 2.2 : Créer Fighter.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
+- [x] **Code à écrire** : Classe `Fighter` avec propriétés de base (position, équipe, santé, couleur)
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Fighter.java`
+- [x] **Message commit** : `"Feature: Entité Fighter avec propriétés de base"`
+- [x] **Push** : `git commit -m "Feature: Entité Fighter avec propriétés de base"` puis `git push origin feature/model-entities`
+
+### Étape 2.3 : Créer Cursor.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
+- [x] **Code à écrire** : Classe `Cursor` pour contrôle des équipes (position, équipe, état)
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/entities/Cursor.java`
+- [x] **Message commit** : `"Feature: Entité Cursor pour contrôle équipes"`
+- [x] **Push** : `git commit -m "Feature: Entité Cursor pour contrôle équipes"` puis `git push origin feature/model-entities`
+
+### Étape 2.4 : Créer MapLoader.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
+- [x] **Code à écrire** : Classe `MapLoader` pour charger les cartes BMP depuis les ressources
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/MapLoader.java`
+- [x] **Message commit** : `"Feature: Chargement de cartes BMP"`
+- [x] **Push** : `git commit -m "Feature: Chargement de cartes BMP"` puis `git push origin feature/model-entities`
+
+###Étape 2.5 : Créer GameState.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
+- [x] **Code à écrire** : Classe `GameState` thread-safe pour gérer l'état du jeu
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/GameState.java`
+- [x] **Message commit** : `"Feature: GameState thread-safe"`
+- [x] **Push** : `git commit -m "Feature: GameState thread-safe"` puis `git push origin feature/model-entities`
+
+### Étape 2.6 : Merge vers develop
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Merger** : `git merge --no-ff feature/model-entities`
+- [x] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/model-entities`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/model-entities`
+- [x] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 3 : Core Game - Service Layer (Abderrahman AJINOU)
+
+### Étape 3.1 : Préparation pour Gradient System
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Créer branche** : `git checkout -b feature/gradient-system`
+- [x] **Branche actuelle** : `feature/gradient-system`
+- [x] **Branche source** : `develop`
+
+### Étape 3.2 : Créer PathfindingEngine.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
+- [x] **Code à écrire** : Classe `PathfindingEngine` avec système de gradient BFS
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/PathfindingEngine.java`
+- [x] **Message commit** : `"Feature: Système de gradient BFS"`
+- [x] **Push** : `git commit -m "Feature: Système de gradient BFS"` puis `git push origin feature/gradient-system`
+
+### Étape 3.3 : Créer MovementEngine.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
+- [x] **Code à écrire** : Classe `MovementEngine` pour mouvement des fighters suivant le gradient
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/MovementEngine.java`
+- [x] **Message commit** : `"Feature: Mouvement fighters suivant gradient"`
+- [x] **Push** : `git commit -m "Feature: Mouvement fighters suivant gradient"` puis `git push origin feature/gradient-system`
+
+### Étape 3.4 : Créer CombatEngine.java
+- [x] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
+- [x] **Code à écrire** : Classe `CombatEngine` pour système de combat et conversion d'équipes
+- [x] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/CombatEngine.java`
+- [x] **Message commit** : `"Feature: Système de combat et conversion équipes"`
+- [x] **Push** : `git commit -m "Feature: Système de combat et conversion équipes"` puis `git push origin feature/gradient-system`
+
+### Étape 3.5 : Merge vers develop
+- [x] **Changer de branche** : `git checkout develop`
+- [x] **Pull** : `git pull origin develop`
+- [x] **Merger** : `git merge --no-ff feature/gradient-system`
+- [x] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/gradient-system`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/gradient-system`
+- [x] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 4 : Design Patterns - Strategy Pattern IA (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 4.1 : Préparation pour AI System
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/ai-system`
+- [ ] **Branche actuelle** : `feature/ai-system`
+- [ ] **Branche source** : `develop`
+
+### Étape 4.2 : Créer AIStrategy.java (interface)
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/AIStrategy.java`
+- [ ] **Code à écrire** : Interface `AIStrategy` pour Strategy Pattern
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/AIStrategy.java`
+- [ ] **Message commit** : `"Feature: Interface Strategy Pattern pour IA"`
+- [ ] **Push** : `git commit -m "Feature: Interface Strategy Pattern pour IA"` puis `git push origin feature/ai-system`
+
+### Étape 4.3 : Créer RandomAI.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/RandomAI.java`
+- [ ] **Code à écrire** : Classe `RandomAI` implémentant `AIStrategy` - IA facile (mouvement aléatoire)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/RandomAI.java`
+- [ ] **Message commit** : `"Feature: RandomAI - IA facile (mouvement aléatoire)"`
+- [ ] **Push** : `git commit -m "Feature: RandomAI - IA facile (mouvement aléatoire)"` puis `git push origin feature/ai-system`
+
+### Étape 4.4 : Créer DefensiveAI.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/DefensiveAI.java`
+- [ ] **Code à écrire** : Classe `DefensiveAI` - IA moyenne (défense territoire)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/DefensiveAI.java`
+- [ ] **Message commit** : `"Feature: DefensiveAI - IA moyenne (défense territoire)"`
+- [ ] **Push** : `git commit -m "Feature: DefensiveAI - IA moyenne (défense territoire)"` puis `git push origin feature/ai-system`
+
+### Étape 4.5 : Créer AggressiveAI.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/AggressiveAI.java`
+- [ ] **Code à écrire** : Classe `AggressiveAI` - IA difficile (attaque agressive)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/AggressiveAI.java`
+- [ ] **Message commit** : `"Feature: AggressiveAI - IA difficile (attaque agressive)"`
+- [ ] **Push** : `git commit -m "Feature: AggressiveAI - IA difficile (attaque agressive)"` puis `git push origin feature/ai-system`
+
+### Étape 4.6 : Créer AIController.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Code à écrire** : Classe `AIController` pour gestion de l'IA
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Message commit** : `"Feature: AIController pour gestion IA"`
+- [ ] **Push** : `git commit -m "Feature: AIController pour gestion IA"` puis `git push origin feature/ai-system`
+
+### Étape 4.7 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/ai-system`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/ai-system`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/ai-system`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 5 : Design Patterns - Autres Patterns (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 5.1 : Préparation pour Design Patterns
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/design-patterns`
+- [ ] **Branche actuelle** : `feature/design-patterns`
+- [ ] **Branche source** : `develop`
+
+### Étape 5.2 : Observer Pattern
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/observer/GameSubject.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/observer/GameObserver.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/observer/GameEvent.java`
+- [ ] **Code à écrire** : Implémentation du pattern Observer pour notifications modèle-vue
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/observer/*.java`
+- [ ] **Message commit** : `"Feature: Observer Pattern pour notifications modèle-vue"`
+- [ ] **Push** : `git commit -m "Feature: Observer Pattern pour notifications modèle-vue"` puis `git push origin feature/design-patterns`
+
+### Étape 5.3 : Factory Pattern
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/factory/EntityFactory.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/factory/ConfigFactory.java`
+- [ ] **Code à écrire** : Implémentation du pattern Factory pour entités et configurations
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/model/factory/EntityFactory.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/factory/ConfigFactory.java`
+- [ ] **Message commit** : `"Feature: Factory Pattern pour entités et configurations"`
+- [ ] **Push** : `git commit -m "Feature: Factory Pattern pour entités et configurations"` puis `git push origin feature/design-patterns`
+
+### Étape 5.4 : Command Pattern
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/command/Command.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/command/MoveCursorCommand.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/command/CommandHistory.java`
+- [ ] **Code à écrire** : Implémentation du pattern Command avec undo/redo
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/command/*.java`
+- [ ] **Message commit** : `"Feature: Command Pattern avec undo/redo"`
+- [ ] **Push** : `git commit -m "Feature: Command Pattern avec undo/redo"` puis `git push origin feature/design-patterns`
+
+### Étape 5.5 : Singleton Pattern
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/GameConfig.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/GameOptions.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Code à écrire** : Implémentation du pattern Singleton pour config et audio
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/GameConfig.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/config/GameOptions.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Message commit** : `"Feature: Singleton Pattern pour config et audio"`
+- [ ] **Push** : `git commit -m "Feature: Singleton Pattern pour config et audio"` puis `git push origin feature/design-patterns`
+
+### Étape 5.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/design-patterns`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/design-patterns`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/design-patterns`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 6 : Interface Utilisateur - Système de Menus (Abderrahman AJINOU) ⭐ IMPORTANT
+
+### Étape 6.1 : Préparation pour Menu System
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/menu-system`
+- [ ] **Branche actuelle** : `feature/menu-system`
+- [ ] **Branche source** : `develop`
+
+### Étape 6.2 : Créer MenuManager.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/MenuManager.java`
+- [ ] **Code à écrire** : Classe `MenuManager` avec CardLayout pour navigation entre menus
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/MenuManager.java`
+- [ ] **Message commit** : `"Feature: MenuManager avec CardLayout pour navigation"`
+- [ ] **Push** : `git commit -m "Feature: MenuManager avec CardLayout pour navigation"` puis `git push origin feature/menu-system`
+
+### Étape 6.3 : Créer MainMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MainMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour menu principal (JOUER, OPTIONS, AIDE, QUITTER)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MainMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu principal (JOUER, OPTIONS, AIDE, QUITTER)"`
+- [ ] **Push** : `git commit -m "Feature: Menu principal (JOUER, OPTIONS, AIDE, QUITTER)"` puis `git push origin feature/menu-system`
+
+### Étape 6.4 : Créer OptionsMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/OptionsMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour menu options (Volume, Qualité, Vitesse)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/OptionsMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu options (Volume, Qualité, Vitesse)"`
+- [ ] **Push** : `git commit -m "Feature: Menu options (Volume, Qualité, Vitesse)"` puis `git push origin feature/menu-system`
+
+### Étape 6.5 : Créer HelpMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/HelpMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour menu aide avec sections
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/HelpMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu aide avec sections"`
+- [ ] **Push** : `git commit -m "Feature: Menu aide avec sections"` puis `git push origin feature/menu-system`
+
+### Étape 6.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/menu-system`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/menu-system`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/menu-system`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 7 : Interface Utilisateur - Configuration Équipes (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 7.1 : Préparation pour Team Config
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/team-config`
+- [ ] **Branche actuelle** : `feature/team-config`
+- [ ] **Branche source** : `develop`
+
+### Étape 7.2 : Créer TeamConfigMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TeamConfigMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour configuration 2 équipes (contrôles, couleurs)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TeamConfigMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu configuration 2 équipes"`
+- [ ] **Push** : `git commit -m "Feature: Menu configuration 2 équipes"` puis `git push origin feature/team-config`
+
+### Étape 7.3 : Créer TrioConfigMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TrioConfigMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour configuration 3 équipes
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TrioConfigMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu configuration 3 équipes"`
+- [ ] **Push** : `git commit -m "Feature: Menu configuration 3 équipes"` puis `git push origin feature/team-config`
+
+### Étape 7.4 : Ajouter sélection couleurs
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TeamConfigMenuPanel.java`
+- [ ] **Code à écrire** : Ajouter sélection couleurs équipes avec détection conflits
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TeamConfigMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Sélection couleurs équipes avec détection conflits"`
+- [ ] **Push** : `git commit -m "Feature: Sélection couleurs équipes avec détection conflits"` puis `git push origin feature/team-config`
+
+### Étape 7.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/team-config`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/team-config`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/team-config`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 8 : Fonctionnalités Avancées - Sélection Carte (Abderrahman AJINOU) ⭐ IMPORTANT
+
+### Étape 8.1 : Préparation pour Map Selection
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/map-selection`
+- [ ] **Branche actuelle** : `feature/map-selection`
+- [ ] **Branche source** : `develop`
+
+### Étape 8.2 : Créer MapSelectionMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour sélection carte avec grid 3x2 (ALÉATOIRE + 5 cartes)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu sélection carte avec grid 3x2"`
+- [ ] **Push** : `git commit -m "Feature: Menu sélection carte avec grid 3x2"` puis `git push origin feature/map-selection`
+
+### Étape 8.3 : Ajout images preview
+- [ ] **Fichiers** : Les images sont déjà dans `src/main/resources/map-screens/`
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Code à écrire** : Charger et afficher les images preview pour chaque carte
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Images preview pour cartes"`
+- [ ] **Push** : `git commit -m "Feature: Images preview pour cartes"` puis `git push origin feature/map-selection`
+
+### Étape 8.4 : Amélioration UX
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Code à écrire** : Cache images, correction position noms cartes
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/MapSelectionMenuPanel.java`
+- [ ] **Message commit** : `"Fix: Cache images et correction position noms cartes"`
+- [ ] **Push** : `git commit -m "Fix: Cache images et correction position noms cartes"` puis `git push origin feature/map-selection`
+
+### Étape 8.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/map-selection`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/map-selection`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/map-selection`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 9 : Fonctionnalités Avancées - Mode Temps (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 9.1 : Préparation pour Time Mode
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/time-mode`
+- [ ] **Branche actuelle** : `feature/time-mode`
+- [ ] **Branche source** : `develop`
+
+### Étape 9.2 : Créer TimeModeMenuPanel.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TimeModeMenuPanel.java`
+- [ ] **Code à écrire** : Panel pour sélection mode temps (CHRONO/MINUTERIE) avec choix durée
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/TimeModeMenuPanel.java`
+- [ ] **Message commit** : `"Feature: Menu sélection mode temps (Chrono/Minuterie)"`
+- [ ] **Push** : `git commit -m "Feature: Menu sélection mode temps (Chrono/Minuterie)"` puis `git push origin feature/time-mode`
+
+### Étape 9.3 : Intégration dans MenuManager
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/MenuManager.java`
+- [ ] **Code à écrire** : Intégrer TimeModeMenuPanel dans le flux de navigation des menus
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/MenuManager.java`
+- [ ] **Message commit** : `"Feature: Intégration TimeModeMenuPanel dans flux menus"`
+- [ ] **Push** : `git commit -m "Feature: Intégration TimeModeMenuPanel dans flux menus"` puis `git push origin feature/time-mode`
+
+### Étape 9.4 : Compte à rebours dans GameStatsPanel
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameStatsPanel.java`
+- [ ] **Code à écrire** : Ajouter affichage compte à rebours pour mode minuterie
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameStatsPanel.java`
+- [ ] **Message commit** : `"Feature: Compte à rebours pour mode minuterie"`
+- [ ] **Push** : `git commit -m "Feature: Compte à rebours pour mode minuterie"` puis `git push origin feature/time-mode`
+
+### Étape 9.5 : Logique fin de partie minuterie
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/LiquidWarGame.java`
+- [ ] **Code à écrire** : Ajouter logique fin de partie automatique quand minuterie atteint 00:00
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/LiquidWarGame.java`
+- [ ] **Message commit** : `"Feature: Fin de partie automatique mode minuterie"`
+- [ ] **Push** : `git commit -m "Feature: Fin de partie automatique mode minuterie"` puis `git push origin feature/time-mode`
+
+### Étape 9.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/time-mode`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/time-mode`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/time-mode`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 10 : Améliorations Visuelles - Rendu et Effets (Abderrahman AJINOU) ⭐ IMPORTANT
+
+### Étape 10.1 : Préparation pour Visual Improvements
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/visual-improvements`
+- [ ] **Branche actuelle** : `feature/visual-improvements`
+- [ ] **Branche source** : `develop`
+
+### Étape 10.2 : Refactor GameCanvas
+- [ ] **Fichier à créer** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java`
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Code à écrire** : Extraire la logique de rendu dans GameRenderer
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Message commit** : `"Refactor: Extraction GameRenderer depuis GameCanvas"`
+- [ ] **Push** : `git commit -m "Refactor: Extraction GameRenderer depuis GameCanvas"` puis `git push origin feature/visual-improvements`
+
+### Étape 10.3 : Decorator Pattern
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/decorator/ParticleDecorator.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/decorator/TrailDecorator.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/decorator/AuraDecorator.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/decorator/CompositeDecorator.java`
+- [ ] **Code à écrire** : Implémentation du pattern Decorator pour effets visuels
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/decorator/*.java`
+- [ ] **Message commit** : `"Feature: Decorator Pattern pour effets visuels"`
+- [ ] **Push** : `git commit -m "Feature: Decorator Pattern pour effets visuels"` puis `git push origin feature/visual-improvements`
+
+### Étape 10.4 : Visibilité curseurs
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java`
+- [ ] **Code à écrire** : Améliorer visibilité curseurs avec contour contrasté
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java`
+- [ ] **Message commit** : `"Feature: Amélioration visibilité curseurs (contour contrasté)"`
+- [ ] **Push** : `git commit -m "Feature: Amélioration visibilité curseurs (contour contrasté)"` puis `git push origin feature/visual-improvements`
+
+### Étape 10.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/visual-improvements`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/visual-improvements`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/visual-improvements`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 11 : Améliorations Visuelles - Régénération Santé (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 11.1 : Préparation pour Health Regeneration
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/health-regeneration`
+- [ ] **Branche actuelle** : `feature/health-regeneration`
+- [ ] **Branche source** : `develop`
+
+### Étape 11.2 : Tinting basé sur santé
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java`
+- [ ] **Code à écrire** : Ajouter tinting couleur basé sur santé des fighters
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameRenderer.java`
+- [ ] **Message commit** : `"Feature: Tinting couleur basé sur santé fighters"`
+- [ ] **Push** : `git commit -m "Feature: Tinting couleur basé sur santé fighters"` puis `git push origin feature/health-regeneration`
+
+### Étape 11.3 : Logique régénération
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Code à écrire** : Ajouter logique régénération santé avec retour couleur progressive
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Message commit** : `"Feature: Régénération santé avec retour couleur progressive"`
+- [ ] **Push** : `git commit -m "Feature: Régénération santé avec retour couleur progressive"` puis `git push origin feature/health-regeneration`
+
+### Étape 11.4 : Ajustement vitesse régénération
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Code à écrire** : Ajuster HEAL_INTERVAL_TICKS et HEAL_AMOUNT pour vitesse optimale
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Message commit** : `"Fix: Ajustement vitesse régénération (HEAL_INTERVAL_TICKS)"`
+- [ ] **Push** : `git commit -m "Fix: Ajustement vitesse régénération (HEAL_INTERVAL_TICKS)"` puis `git push origin feature/health-regeneration`
+
+### Étape 11.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/health-regeneration`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/health-regeneration`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/health-regeneration`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 12 : Collisions et IA - Collision Curseurs (Abderrahman AJINOU)
+
+### Étape 12.1 : Préparation pour Obstacle Collision
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/obstacle-collision`
+- [ ] **Branche actuelle** : `feature/obstacle-collision`
+- [ ] **Branche source** : `develop`
+
+### Étape 12.2 : Spiral search algorithm
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/input/PlayerCursorController.java`
+- [ ] **Code à écrire** : Implémenter recherche position libre avec algorithme spiral search
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/input/PlayerCursorController.java`
+- [ ] **Message commit** : `"Feature: Recherche position libre (spiral search)"`
+- [ ] **Push** : `git commit -m "Feature: Recherche position libre (spiral search)"` puis `git push origin feature/obstacle-collision`
+
+### Étape 12.3 : Collision curseur joueur
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/input/PlayerCursorController.java`
+- [ ] **Code à écrire** : Ajouter détection collision curseur joueur avec obstacles
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/input/PlayerCursorController.java`
+- [ ] **Message commit** : `"Feature: Collision curseur joueur avec obstacles"`
+- [ ] **Push** : `git commit -m "Feature: Collision curseur joueur avec obstacles"` puis `git push origin feature/obstacle-collision`
+
+### Étape 12.4 : Collision curseur IA
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Code à écrire** : Ajouter détection collision curseur IA avec obstacles
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Message commit** : `"Feature: Collision curseur IA avec obstacles"`
+- [ ] **Push** : `git commit -m "Feature: Collision curseur IA avec obstacles"` puis `git push origin feature/obstacle-collision`
+
+### Étape 12.5 : Gliding movement
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Code à écrire** : Ajouter gliding movement pour curseurs sur obstacles
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Message commit** : `"Feature: Gliding movement pour curseurs sur obstacles"`
+- [ ] **Push** : `git commit -m "Feature: Gliding movement pour curseurs sur obstacles"` puis `git push origin feature/obstacle-collision`
+
+### Étape 12.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/obstacle-collision`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/obstacle-collision`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/obstacle-collision`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 13 : Collisions et IA - Correction IA Bloquée (Abderrahman AJINOU) ⭐ IMPORTANT
+
+### Étape 13.1 : Préparation pour AI Stuck Fix
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/ai-stuck-fix`
+- [ ] **Branche actuelle** : `feature/ai-stuck-fix`
+- [ ] **Branche source** : `develop`
+
+### Étape 13.2 : Détection blocage
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Code à écrire** : Ajouter détection blocage IA (stuckCounter)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Message commit** : `"Feature: Détection blocage IA (stuckCounter)"`
+- [ ] **Push** : `git commit -m "Feature: Détection blocage IA (stuckCounter)"` puis `git push origin feature/ai-stuck-fix`
+
+### Étape 13.3 : Mouvement forcé
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Code à écrire** : Ajouter mouvement forcé pour débloquer IA
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/AIController.java`
+- [ ] **Message commit** : `"Feature: Mouvement forcé pour débloquer IA"`
+- [ ] **Push** : `git commit -m "Feature: Mouvement forcé pour débloquer IA"` puis `git push origin feature/ai-stuck-fix`
+
+### Étape 13.4 : Amélioration DefensiveAI
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/DefensiveAI.java`
+- [ ] **Code à écrire** : Améliorer évitement obstacles avec multi-stage search
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ai/DefensiveAI.java`
+- [ ] **Message commit** : `"Feature: Amélioration évitement obstacles DefensiveAI"`
+- [ ] **Push** : `git commit -m "Feature: Amélioration évitement obstacles DefensiveAI"` puis `git push origin feature/ai-stuck-fix`
+
+### Étape 13.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/ai-stuck-fix`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/ai-stuck-fix`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/ai-stuck-fix`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 14 : Multijoueur Réseau - Serveur (Abderrahman AJINOU)
+
+### Étape 14.1 : Préparation pour Network Server
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/network-server`
+- [ ] **Branche actuelle** : `feature/network-server`
+- [ ] **Branche source** : `develop`
+
+### Étape 14.2 : Créer NetworkServer.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkServer.java`
+- [ ] **Code à écrire** : Serveur réseau TCP pour multijoueur
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkServer.java`
+- [ ] **Message commit** : `"Feature: Serveur réseau TCP pour multijoueur"`
+- [ ] **Push** : `git commit -m "Feature: Serveur réseau TCP pour multijoueur"` puis `git push origin feature/network-server`
+
+### Étape 14.3 : Créer NetworkProtocol.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkProtocol.java`
+- [ ] **Code à écrire** : Protocole réseau personnalisé
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkProtocol.java`
+- [ ] **Message commit** : `"Feature: Protocole réseau personnalisé"`
+- [ ] **Push** : `git commit -m "Feature: Protocole réseau personnalisé"` puis `git push origin feature/network-server`
+
+### Étape 14.4 : Créer NetworkMessage.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkMessage.java`
+- [ ] **Code à écrire** : Messages réseau sérialisés
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkMessage.java`
+- [ ] **Message commit** : `"Feature: Messages réseau sérialisés"`
+- [ ] **Push** : `git commit -m "Feature: Messages réseau sérialisés"` puis `git push origin feature/network-server`
+
+### Étape 14.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/network-server`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/network-server`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/network-server`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 15 : Multijoueur Réseau - Client (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 15.1 : Préparation pour Network Client
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/network-client`
+- [ ] **Branche actuelle** : `feature/network-client`
+- [ ] **Branche source** : `develop`
+
+### Étape 15.2 : Créer NetworkClient.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkClient.java`
+- [ ] **Code à écrire** : Client réseau TCP
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkClient.java`
+- [ ] **Message commit** : `"Feature: Client réseau TCP"`
+- [ ] **Push** : `git commit -m "Feature: Client réseau TCP"` puis `git push origin feature/network-client`
+
+### Étape 15.3 : Créer NetworkGameController.java
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkGameController.java`
+- [ ] **Code à écrire** : Contrôleur jeu réseau
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/network/NetworkGameController.java`
+- [ ] **Message commit** : `"Feature: Contrôleur jeu réseau"`
+- [ ] **Push** : `git commit -m "Feature: Contrôleur jeu réseau"` puis `git push origin feature/network-client`
+
+### Étape 15.4 : Créer menus réseau
+- [ ] **Fichiers à écrire** :
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/NetworkMenuPanel.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/ServerSetupPanel.java`
+  - `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/ClientConnectPanel.java`
+- [ ] **Code à écrire** : Menus multijoueur réseau
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/NetworkMenuPanel.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/ServerSetupPanel.java src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/ClientConnectPanel.java`
+- [ ] **Message commit** : `"Feature: Menus multijoueur réseau"`
+- [ ] **Push** : `git commit -m "Feature: Menus multijoueur réseau"` puis `git push origin feature/network-client`
+
+### Étape 15.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/network-client`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/network-client`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/network-client`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 16 : Optimisations - Parallélisation (Abderrahman AJINOU) ⭐ CRITIQUE
+
+### Étape 16.1 : Préparation pour Parallelization
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b feature/parallelization`
+- [ ] **Branche actuelle** : `feature/parallelization`
+- [ ] **Branche source** : `develop`
+
+### Étape 16.2 : ParallelPathfindingEngine
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ParallelPathfindingEngine.java`
+- [ ] **Code à écrire** : Parallélisation gradient avec Virtual Threads (Java 21)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ParallelPathfindingEngine.java`
+- [ ] **Message commit** : `"Feature: Parallélisation gradient avec Virtual Threads"`
+- [ ] **Push** : `git commit -m "Feature: Parallélisation gradient avec Virtual Threads"` puis `git push origin feature/parallelization`
+
+### Étape 16.3 : ParallelMovementEngine
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ParallelMovementEngine.java`
+- [ ] **Code à écrire** : Parallélisation mouvement fighters
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/service/ParallelMovementEngine.java`
+- [ ] **Message commit** : `"Feature: Parallélisation mouvement fighters"`
+- [ ] **Push** : `git commit -m "Feature: Parallélisation mouvement fighters"` puis `git push origin feature/parallelization`
+
+### Étape 16.4 : Object Pool
+- [ ] **Fichier à écrire** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/util/ObjectPool.java`
+- [ ] **Code à écrire** : Object Pool Pattern pour optimisation mémoire
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/util/ObjectPool.java`
+- [ ] **Message commit** : `"Feature: Object Pool Pattern pour optimisation mémoire"`
+- [ ] **Push** : `git commit -m "Feature: Object Pool Pattern pour optimisation mémoire"` puis `git push origin feature/parallelization`
+
+### Étape 16.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff feature/parallelization`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d feature/parallelization`
+- [ ] **Supprimer branche distante** : `git push origin --delete feature/parallelization`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 17 : Corrections - Hotfix Musique (Ahmed CHABIRA-MOUNCEF)
+
+### Étape 17.1 : Préparation pour Hotfix Music
+- [ ] **Changer de branche** : `git checkout main`
+- [ ] **Pull** : `git pull origin main`
+- [ ] **Créer branche** : `git checkout -b hotfix/music-fix`
+- [ ] **Branche actuelle** : `hotfix/music-fix`
+- [ ] **Branche source** : `main`
+
+### Étape 17.2 : Correction AudioManager
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Code à écrire** : Corriger problème musique ne démarre pas au lancement
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Message commit** : `"Fix: Musique ne démarre pas au lancement"`
+- [ ] **Push** : `git commit -m "Fix: Musique ne démarre pas au lancement"` puis `git push origin hotfix/music-fix`
+
+### Étape 17.3 : Retry logic
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Code à écrire** : Ajouter retry logic pour AudioManager
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/audio/AudioManager.java`
+- [ ] **Message commit** : `"Fix: Retry logic pour AudioManager"`
+- [ ] **Push** : `git commit -m "Fix: Retry logic pour AudioManager"` puis `git push origin hotfix/music-fix`
+
+### Étape 17.4 : Initialisation asynchrone
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/LiquidWarGame.java`
+- [ ] **Code à écrire** : Initialisation asynchrone musique
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/controller/LiquidWarGame.java`
+- [ ] **Message commit** : `"Fix: Initialisation asynchrone musique"`
+- [ ] **Push** : `git commit -m "Fix: Initialisation asynchrone musique"` puis `git push origin hotfix/music-fix`
+
+### Étape 17.5 : Merge vers main
+- [ ] **Changer de branche** : `git checkout main`
+- [ ] **Pull** : `git pull origin main`
+- [ ] **Merger** : `git merge --no-ff hotfix/music-fix`
+- [ ] **Tag** : `git tag v1.1.0`
+- [ ] **Push** : `git push origin main --tags`
+
+### Étape 17.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff hotfix/music-fix`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d hotfix/music-fix`
+- [ ] **Supprimer branche distante** : `git push origin --delete hotfix/music-fix`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 18 : Corrections - Hotfix Qualité Graphique (Abderrahman AJINOU)
+
+### Étape 18.1 : Préparation pour Hotfix Graphics Quality
+- [ ] **Changer de branche** : `git checkout main`
+- [ ] **Pull** : `git pull origin main`
+- [ ] **Créer branche** : `git checkout -b hotfix/graphics-quality-fix`
+- [ ] **Branche actuelle** : `hotfix/graphics-quality-fix`
+- [ ] **Branche source** : `main`
+
+### Étape 18.2 : Correction inversion logique
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Code à écrire** : Inverser logique qualité graphique (Élevée = basse qualité, Basse = haute qualité)
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/GameCanvas.java`
+- [ ] **Message commit** : `"Fix: Inversion logique qualité graphique"`
+- [ ] **Push** : `git commit -m "Fix: Inversion logique qualité graphique"` puis `git push origin hotfix/graphics-quality-fix`
+
+### Étape 18.3 : Correction direction menu
+- [ ] **Fichier à modifier** : `src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/OptionsMenuPanel.java`
+- [ ] **Code à écrire** : Corriger direction changement qualité dans menu
+- [ ] **Commit** : `git add src/main/java/fr/uparis/informatique/cpoo5/liquidwar/view/menu/OptionsMenuPanel.java`
+- [ ] **Message commit** : `"Fix: Correction direction changement qualité"`
+- [ ] **Push** : `git commit -m "Fix: Correction direction changement qualité"` puis `git push origin hotfix/graphics-quality-fix`
+
+### Étape 18.4 : Merge vers main
+- [ ] **Changer de branche** : `git checkout main`
+- [ ] **Pull** : `git pull origin main`
+- [ ] **Merger** : `git merge --no-ff hotfix/graphics-quality-fix`
+- [ ] **Tag** : `git tag v1.2.0`
+- [ ] **Push** : `git push origin main --tags`
+
+### Étape 18.5 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff hotfix/graphics-quality-fix`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d hotfix/graphics-quality-fix`
+- [ ] **Supprimer branche distante** : `git push origin --delete hotfix/graphics-quality-fix`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎯 Phase 19 : Release Finale - Préparation (Abderrahman AJINOU) ⭐ CRITIQUE
+
+### Étape 19.1 : Préparation Release
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Créer branche** : `git checkout -b release/v2.0.0`
+- [ ] **Branche actuelle** : `release/v2.0.0`
+- [ ] **Branche source** : `develop`
+
+### Étape 19.2 : Mise à jour version
+- [ ] **Fichier à modifier** : `build.gradle`
+- [ ] **Code à écrire** : Mettre à jour version à 2.0.0
+- [ ] **Commit** : `git add build.gradle`
+- [ ] **Message commit** : `"Release: Mise à jour version 2.0.0"`
+- [ ] **Push** : `git commit -m "Release: Mise à jour version 2.0.0"` puis `git push origin release/v2.0.0`
+
+### Étape 19.3 : Tests finaux
+- [ ] **Exécuter** : `./gradlew clean test`
+- [ ] **Vérifier** : Tous les tests passent
+- [ ] **Commit** : `git add .`
+- [ ] **Message commit** : `"Release: Tests finaux - tous passants"`
+- [ ] **Push** : `git commit -m "Release: Tests finaux - tous passants"` puis `git push origin release/v2.0.0`
+
+### Étape 19.4 : Documentation
+- [ ] **Fichiers à ajouter** :
+  - `GIT_ARCHITECTURE.md` (si pas déjà présent)
+  - `WORKFLOW_COLLABORATIF.md` (si pas déjà présent)
+  - `CHECKLIST_DEVELOPPEMENT.md` (ce fichier)
+- [ ] **Commit** : `git add *.md`
+- [ ] **Message commit** : `"Release: Documentation complète architecture et workflow"`
+- [ ] **Push** : `git commit -m "Release: Documentation complète architecture et workflow"` puis `git push origin release/v2.0.0`
+
+### Étape 19.5 : Merge vers main
+- [ ] **Changer de branche** : `git checkout main`
+- [ ] **Pull** : `git pull origin main`
+- [ ] **Merger** : `git merge --no-ff release/v2.0.0`
+- [ ] **Tag** : `git tag v2.0.0`
+- [ ] **Push** : `git push origin main --tags`
+
+### Étape 19.6 : Merge vers develop
+- [ ] **Changer de branche** : `git checkout develop`
+- [ ] **Pull** : `git pull origin develop`
+- [ ] **Merger** : `git merge --no-ff release/v2.0.0`
+- [ ] **Push** : `git push origin develop`
+- [ ] **Supprimer branche locale** : `git branch -d release/v2.0.0`
+- [ ] **Supprimer branche distante** : `git push origin --delete release/v2.0.0`
+- [ ] **Branche actuelle** : `develop`
+
+---
+
+## 🎉 FIN DU DÉVELOPPEMENT
+
+### Étape Finale : Vérification
+- [ ] **Vérifier** : Tous les commits sont poussés
+- [ ] **Vérifier** : Toutes les branches feature sont mergées et supprimées
+- [ ] **Vérifier** : Les tags sont créés (v1.1.0, v1.2.0, v2.0.0)
+- [ ] **Vérifier** : La branche `main` contient la version finale
+- [ ] **Vérifier** : La branche `develop` est à jour
+- [ ] **Félicitations** : Le projet est terminé ! 🎊
+
+---
+
+## 📝 Notes Importantes
+
+### Commandes Git Essentielles
+- `git status` : Vérifier l'état actuel
+- `git checkout <branche>` : Changer de branche
+- `git checkout -b <nouvelle-branche>` : Créer et changer de branche
+- `git pull origin <branche>` : Récupérer dernières modifications
+- `git add <fichier>` : Ajouter fichier au staging
+- `git commit -m "message"` : Créer commit
+- `git push origin <branche>` : Pousser vers dépôt distant
+- `git merge --no-ff <branche>` : Merger branche (préserve historique)
+- `git branch -d <branche>` : Supprimer branche locale
+- `git push origin --delete <branche>` : Supprimer branche distante
+
+### Règles à Respecter
+1. **Toujours pull avant push** : `git pull origin <branche>` avant `git push`
+2. **Merge --no-ff** : Toujours utiliser `--no-ff` pour préserver l'historique
+3. **Messages de commit clairs** : Format "Type: Description"
+4. **Une feature = une branche** : Ne jamais mélanger plusieurs features
+5. **Supprimer branches après merge** : Nettoyer les branches mergées
+
+---
+
+**Bonne chance avec le développement ! 🚀**
