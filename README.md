@@ -325,8 +325,15 @@ Générer la documentation :
 # Ouvrir : build/docs/javadoc/index.html
 ```
 
-### Diagrammes
-Voir le fichier `DIAGRAMMES_CLASSES.md` pour les diagrammes UML.
+### Documentation Complète
+
+Toute la documentation du projet est organisée dans le dossier `docs/` :
+
+- **[docs/CAHIER_DES_CHARGES.md](docs/CAHIER_DES_CHARGES.md)** (63 KB) - Cahier des charges complet et exceptionnel
+- **[docs/DIAGRAMMES_CLASSES.md](docs/DIAGRAMMES_CLASSES.md)** (34 KB) - Diagrammes UML de l'architecture
+- **[docs/INDEX.md](docs/INDEX.md)** - Index de toute la documentation
+
+**Voir [docs/INDEX.md](docs/INDEX.md) pour la liste complète des documents.**
 
 ---
 

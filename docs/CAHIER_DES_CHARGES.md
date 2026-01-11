@@ -2197,6 +2197,5 @@ fr.uparis.informatique.cpoo5.liquidwar
 *Document créé le 11 janvier 2026*  
 *Version : 1.0*  
 *Statut : ✅ PROJET COMPLET ET FONCTIONNEL*  
-*Note Estimée : 19-20/20*  
 
 🏆 **PROJET PRÊT POUR LE RENDU ET LA PRÉSENTATION** 🏆
