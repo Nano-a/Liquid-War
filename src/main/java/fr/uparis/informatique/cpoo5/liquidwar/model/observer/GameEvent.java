@@ -33,3 +33,4 @@ public enum GameEvent {
     /** Configuration modifiée */
     CONFIG_CHANGED
 }
+

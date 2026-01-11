@@ -1,0 +1,56 @@
+🎯 AHMED - POURQUOI TON GIT ÉTAIT MAL POSITIONNÉ ?
+
+════════════════════════════════════════════════════════
+❌ CE QUE TU AS FAIT (Phase 7) :
+════════════════════════════════════════════════════════
+
+1. Tu t'es positionné sur develop
+2. MAIS tu n'as PAS fait : git pull origin develop
+3. Du coup, tu étais sur un VIEUX commit de develop (3dafdd9)
+4. Tu as créé ta branche depuis ce vieux commit
+5. Résultat : ta branche n'était PAS après le merge de Phase 6
+
+develop (sur ton PC) :
+  ... → 3dafdd9 (TU ÉTAIS LÀ)
+  
+develop (sur GitLab) :
+  ... → 3dafdd9 → ... → de58835 → 3c24bb4 (Phase 6)
+                                     ↑
+                              (TU DEVAIS ÊTRE LÀ !)
+
+════════════════════════════════════════════════════════
+✅ CE QU'IL FAUT FAIRE (Phase 9) :
+════════════════════════════════════════════════════════
+
+1. cd liquid-war-upc
+2. git checkout develop
+3. git pull origin develop  ← LE PLUS IMPORTANT !!!!
+4. git log --oneline -1     ← Vérifier que tu vois fd67134
+5. git checkout -b feature/time-mode
+
+Maintenant tu es sur le BON commit (fd67134) !
+
+develop (à jour) :
+  ... → 3c24bb4 → 9ca7d37 → fd67134 (TU ES LÀ ✅)
+                              ↓
+                    feature/time-mode (TA BRANCHE)
+
+════════════════════════════════════════════════════════
+🔑 LA RÈGLE D'OR :
+════════════════════════════════════════════════════════
+
+TOUJOURS faire "git pull origin develop" AVANT de créer
+une nouvelle branche !
+
+Sans ça, tu branches depuis un vieux commit = ERREUR !
+
+════════════════════════════════════════════════════════
+📞 BESOIN D'AIDE ?
+════════════════════════════════════════════════════════
+
+Après avoir fait tes commandes, envoie-moi :
+  git log --oneline --graph -10
+
+Je te dirai si c'est bon avant que tu push ! 👍
+
+════════════════════════════════════════════════════════

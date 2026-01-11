@@ -1,17 +1,16 @@
 package fr.uparis.informatique.cpoo5.liquidwar.service;
 
+import fr.uparis.informatique.cpoo5.liquidwar.model.entities.Fighter;
+import fr.uparis.informatique.cpoo5.liquidwar.model.entities.Cursor;
+import fr.uparis.informatique.cpoo5.liquidwar.config.GameConfig;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import fr.uparis.informatique.cpoo5.liquidwar.config.GameConfig;
-import main.java.fr.uparis.informatique.cpoo5.liquidwar.model.entities.Cursor;
-import main.java.fr.uparis.informatique.cpoo5.liquidwar.model.entities.Fighter;
 
 /**
  * Moteur de mouvement pour Liquid War.
  * 
- * IMPORTANT : Code extrait de GameCanvas.java (lignes 534-684) pour réduire la
- * taille du fichier.
+ * IMPORTANT : Code extrait de GameCanvas.java (lignes 534-684) pour réduire la taille du fichier.
  * Le code est déplacé TEL QUEL sans modification de la logique.
  * 
  * Responsabilités :
@@ -20,23 +19,22 @@ import main.java.fr.uparis.informatique.cpoo5.liquidwar.model.entities.Fighter;
  * - Gestion des collisions
  */
 public class MovementEngine {
-
+    
     private static final int MAP_WIDTH = GameConfig.MAP_WIDTH;
     private static final int MAP_HEIGHT = GameConfig.MAP_HEIGHT;
     private static final int NB_TRY_MOVE = GameConfig.NB_TRY_MOVE;
     private static final int NB_LOCAL_DIRS = GameConfig.NB_LOCAL_DIRS;
     private static final int AREA_START_GRADIENT = GameConfig.AREA_START_GRADIENT;
-
+    
     // Empêcher l'instanciation
-    private MovementEngine() {
-    }
-
+    private MovementEngine() {}
+    
     /**
      * get_close_dir : Direction directe vers le curseur (comme dans fighter.c)
      */
     public static int getCloseDir(Fighter f, int team, int sens, int start,
-            int[][] cursorPosX, int[][] cursorPosY,
-            Cursor[] cursors, int[] LOCAL_DIR) {
+                                  int[][] cursorPosX, int[][] cursorPosY, 
+                                  Cursor[] cursors, int[] LOCAL_DIR) {
         int idx = f.y * MAP_WIDTH + f.x;
         int cursor_x = cursorPosX[team][idx];
         int cursor_y = cursorPosY[team][idx];
@@ -72,13 +70,13 @@ public class MovementEngine {
         }
         return start;
     }
-
+    
     /**
      * get_main_dir : Direction selon le gradient (comme dans fighter.c)
      */
     public static int getMainDir(int x, int y, int team, int sens, int start,
-            int[][] map, int[][] gradient, int[][] DIR_MOVE_X,
-            int[][] DIR_MOVE_Y, int globalClock) {
+                                 int[][] map, int[][] gradient, int[][] DIR_MOVE_X, 
+                                 int[][] DIR_MOVE_Y, int globalClock) {
         int idx = y * MAP_WIDTH + x;
         int bestDir = -1;
         int bestGrad = AREA_START_GRADIENT;
@@ -110,17 +108,17 @@ public class MovementEngine {
         }
         return globalClock % 12;
     }
-
+    
     /**
      * Déplacer les fighters selon le gradient (comme move_fighters dans le code C)
      */
-    public static void moveFighters(ArrayList<Fighter> fighters, Cursor[] cursors,
-            int[] teamFighterCount, int[][] map, int[][] gradient,
-            int[][] updateTime, int[][] cursorPosX, int[][] cursorPosY,
-            int[] LOCAL_DIR, int[][][] FIGHTER_MOVE_DIR,
-            int[][][] FIGHTER_MOVE_X_ALT, int[][][] FIGHTER_MOVE_Y_ALT,
-            int[][] DIR_MOVE_X, int[][] DIR_MOVE_Y,
-            int globalClock) {
+    public static void moveFighters(ArrayList<Fighter> fighters, Cursor[] cursors, 
+                                   int[] teamFighterCount, int[][] map, int[][] gradient,
+                                   int[][] updateTime, int[][] cursorPosX, int[][] cursorPosY,
+                                   int[] LOCAL_DIR, int[][][] FIGHTER_MOVE_DIR,
+                                   int[][][] FIGHTER_MOVE_X_ALT, int[][][] FIGHTER_MOVE_Y_ALT,
+                                   int[][] DIR_MOVE_X, int[][] DIR_MOVE_Y,
+                                   int globalClock) {
         ArrayList<Fighter> fightersToUpdate = new ArrayList<>(fighters);
         // MOUVEMENT EN VAGUES : Légère rotation pour effet circulaire naturel
         // Pas complètement fixe = évite le carré, crée des vagues
@@ -163,7 +161,7 @@ public class MovementEngine {
             if (dir < 0 || dir >= 12) {
                 dir = startDir; // Direction par défaut
             }
-
+            
             // Légère progression pour variété circulaire (évite le carré)
             startDir = (startDir + 1) % 12;
 
@@ -198,3 +196,4 @@ public class MovementEngine {
         }
     }
 }
+

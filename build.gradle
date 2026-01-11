@@ -1,0 +1,90 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+configurations {
+  testCompile
+}
+
+group 'fr.u-paris.informatique.cpoo5'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls' ]
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    // Lance le jeu AVEC menus par défaut
+    mainClass = 'fr.uparis.informatique.cpoo5.liquidwar.controller.MainWithMenu'
+}
+
+task liquidwar(type: JavaExec) {
+    dependsOn build
+    group = "Execution"
+    description = "Run Liquid War game with menus"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'fr.uparis.informatique.cpoo5.liquidwar.controller.MainWithMenu'
+    standardInput = System.in
+}
+
+task liquidwarDirect(type: JavaExec) {
+    dependsOn build
+    group = "Execution"
+    description = "Run Liquid War game directly (no menus)"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'fr.uparis.informatique.cpoo5.liquidwar.controller.LiquidWarGame'
+    standardInput = System.in
+}
+
+task debugLauncher(type: JavaExec) {
+    dependsOn build
+    group = "Execution"
+    description = "Run Liquid War in DEBUG mode with stats panel"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'fr.uparis.informatique.cpoo5.liquidwar.controller.DebugLauncher'
+    standardInput = System.in
+}
+
+// ==================== CONFIGURATION JAR EXÉCUTABLE ====================
+jar {
+    // Stratégie pour gérer les doublons (prendre le premier)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    
+    manifest {
+        attributes(
+            'Main-Class': 'fr.uparis.informatique.cpoo5.liquidwar.controller.MainWithMenu',
+            'Implementation-Title': 'Liquid War - UPC Edition',
+            'Implementation-Version': '2.0',
+            'Built-By': System.getProperty('user.name'),
+            'Built-JDK': System.getProperty('java.version')
+        )
+    }
+    
+    // Inclure toutes les dépendances (Fat JAR)
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    // Exclure les fichiers de signature
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+    
+    archiveBaseName = 'LiquidWar-UPC'
+    archiveVersion = '2.0'
+}

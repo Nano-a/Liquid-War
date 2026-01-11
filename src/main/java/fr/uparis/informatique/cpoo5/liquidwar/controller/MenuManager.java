@@ -5,7 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;      
+import javax.swing.SwingUtilities;
 
 import fr.uparis.informatique.cpoo5.liquidwar.config.RenderConfig;
 import fr.uparis.informatique.cpoo5.liquidwar.view.menu.ClientConnectPanel;
@@ -27,9 +27,9 @@ import fr.uparis.informatique.cpoo5.liquidwar.view.menu.TrioConfigMenuPanel;
  */
 public class MenuManager {
 
-    private JPanel cardPanel
     private JFrame menuFrame;
-    private CardLayout cardLayout;;
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
 
     // Les différents menus
     private MainMenuPanel mainMenuPanel;
@@ -99,31 +99,6 @@ public class MenuManager {
         // Ajouter le panel à la fenêtre
         menuFrame.add(cardPanel);
         menuFrame.setVisible(true);
-
-        // Forcer la fenêtre au premier plan
-        menuFrame.toFront();
-        menuFrame.requestFocus();
-        // Utiliser setAlwaysOnTop temporairement pour forcer l'affichage
-        menuFrame.setAlwaysOnTop(true);
-        // Après un court délai, désactiver alwaysOnTop (pour permettre l'interaction
-        // normale)
-        javax.swing.Timer timer = new javax.swing.Timer(500, e -> {
-            menuFrame.setAlwaysOnTop(false);
-            menuFrame.toFront();
-            menuFrame.requestFocus();
-            // S'assurer que le panel du menu a le focus de manière asynchrone
-            SwingUtilities.invokeLater(() -> {
-                if (mainMenuPanel != null) {
-                    mainMenuPanel.requestFocusInWindow();
-                    // Si requestFocusInWindow ne fonctionne pas, forcer avec requestFocus
-                    if (!mainMenuPanel.hasFocus()) {
-                        mainMenuPanel.requestFocus();
-                    }
-                }
-            });
-        });
-        timer.setRepeats(false);
-        timer.start();
 
         // Afficher le menu principal
         showMainMenu();
@@ -303,14 +278,7 @@ public class MenuManager {
      */
     private void showMainMenu() {
         cardLayout.show(cardPanel, MAIN_MENU);
-        // Demander le focus de manière asynchrone pour s'assurer qu'il est bien reçu
-        SwingUtilities.invokeLater(() -> {
-            mainMenuPanel.requestFocusInWindow();
-            // Si requestFocusInWindow ne fonctionne pas, forcer avec requestFocus
-            if (!mainMenuPanel.hasFocus()) {
-                mainMenuPanel.requestFocus();
-            }
-        });
+        mainMenuPanel.requestFocusInWindow();
         System.out.println("→ Menu principal affiché");
     }
 
@@ -396,25 +364,10 @@ public class MenuManager {
         serverSetupPanel = new ServerSetupPanel();
         serverSetupPanel.setListener(new ServerSetupPanel.ServerSetupListener() {
             @Override
-            public void onStartServer(String serverName, int port, int minPlayers) {
-                System.out.println("Démarrage du serveur \"" + serverName + "\" sur le port " + port +
-                        " avec " + minPlayers + " joueurs minimum");
-
-                // Vérifier à nouveau les doublons (au cas où un serveur aurait été créé entre
-                // temps)
-                fr.uparis.informatique.cpoo5.liquidwar.network.ServerRegistry registry = fr.uparis.informatique.cpoo5.liquidwar.network.ServerRegistry
-                        .getInstance();
-                if (registry.isNameTaken(serverName)) {
-                    serverSetupPanel.showNameConflictError();
-                    return;
-                }
-                if (registry.isPortTaken(port)) {
-                    serverSetupPanel.showPortConflictError();
-                    return;
-                }
-
-                // Démarrer le serveur (les erreurs seront gérées dans startNetworkGame)
-                startNetworkGameWithErrorHandling(true, "localhost", port, minPlayers, serverName, serverSetupPanel);
+            public void onStartServer(int port, int minPlayers) {
+                System.out.println(
+                        "Démarrage du serveur sur le port " + port + " avec " + minPlayers + " joueurs minimum");
+                startNetworkGame(true, "localhost", port, minPlayers);
             }
 
             @Override
@@ -424,13 +377,13 @@ public class MenuManager {
         });
         cardPanel.add(serverSetupPanel, SERVER_SETUP);
 
-        // Menu connexion client - utiliser ServerListPanel
+        // Menu connexion client
         clientConnectPanel = new ClientConnectPanel();
         clientConnectPanel.setListener(new ClientConnectPanel.ClientConnectListener() {
             @Override
             public void onConnect(String hostname, int port) {
                 System.out.println("Connexion au serveur " + hostname + ":" + port);
-                startNetworkGame(false, hostname, port, 2, null); // Le client ne décide pas du nombre de joueurs
+                startNetworkGame(false, hostname, port, 2); // Le client ne décide pas du nombre de joueurs
             }
 
             @Override
@@ -439,19 +392,6 @@ public class MenuManager {
             }
         });
         cardPanel.add(clientConnectPanel, CLIENT_CONNECT);
-
-        // Démarrer la découverte réseau pour les clients (dès le démarrage du menu)
-        // Cela permet de découvrir les serveurs même avant d'ouvrir le menu de
-        // connexion
-        // Utiliser une instance singleton pour éviter les conflits de port
-        try {
-            fr.uparis.informatique.cpoo5.liquidwar.network.ServerDiscovery discovery = new fr.uparis.informatique.cpoo5.liquidwar.network.ServerDiscovery();
-            discovery.startListening();
-            System.out.println("✅ Découverte réseau démarrée");
-        } catch (Exception e) {
-            System.err.println("⚠️ Impossible de démarrer la découverte réseau: " + e.getMessage());
-            // Continuer sans découverte (mode manuel toujours possible)
-        }
     }
 
     /**
@@ -478,19 +418,7 @@ public class MenuManager {
      */
     private void showClientConnectMenu() {
         cardLayout.show(cardPanel, CLIENT_CONNECT);
-        SwingUtilities.invokeLater(() -> {
-            clientConnectPanel.requestFocusInWindow();
-            if (!clientConnectPanel.hasFocus()) {
-                clientConnectPanel.requestFocus();
-            }
-            // S'assurer que le ServerListPanel reçoit aussi le focus
-            if (clientConnectPanel.getComponentCount() > 0) {
-                java.awt.Component firstComp = clientConnectPanel.getComponent(0);
-                if (firstComp != null) {
-                    firstComp.requestFocusInWindow();
-                }
-            }
-        });
+        clientConnectPanel.requestFocusInWindow();
         System.out.println("→ Menu connexion client affiché");
     }
 
@@ -666,77 +594,19 @@ public class MenuManager {
     }
 
     /**
-     * Lance le jeu en mode réseau avec gestion d'erreur dans le menu
-     */
-    private void startNetworkGameWithErrorHandling(boolean isServer, String host, int port, int minPlayers,
-            String serverName, ServerSetupPanel setupPanel) {
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║   🌐 MODE MULTIJOUEUR RÉSEAU 🌐      ║");
-        System.out.println("╚════════════════════════════════════════╝");
-        System.out.println("");
-        System.out.println("Type: " + (isServer ? "Serveur" : "Client"));
-        if (serverName != null) {
-            System.out.println("Nom du salon: " + serverName);
-        }
-        System.out.println("Adresse: " + host + ":" + port);
-        System.out.println("Joueurs minimum: " + minPlayers);
-        System.out.println("");
-
-        // Lancer le jeu en mode réseau
-        SwingUtilities.invokeLater(() -> {
-            try {
-                System.out.println("→ Lancement du jeu en mode réseau...");
-                NetworkLiquidWarGame networkGame = new NetworkLiquidWarGame(isServer, host, port, minPlayers,
-                        serverName);
-                networkGame.start();
-                System.out.println("✅ Jeu réseau lancé avec succès !");
-                // Fermer la fenêtre des menus seulement si le démarrage réussit
-                menuFrame.dispose();
-            } catch (Exception e) {
-                System.err.println("❌ Erreur lors du lancement du jeu réseau:");
-                e.printStackTrace();
-
-                // Afficher l'erreur dans le menu au lieu d'une popup
-                if (setupPanel != null) {
-                    String errorMsg = e.getMessage();
-                    if (errorMsg != null && (errorMsg.contains("Address already in use") ||
-                            errorMsg.contains("port") || errorMsg.contains("Port") ||
-                            errorMsg.contains("already in use"))) {
-                        setupPanel.showPortConflictError();
-                    } else {
-                        setupPanel.showServerStartError(errorMsg);
-                    }
-                    // Revenir au menu de configuration serveur
-                    showServerSetupMenu();
-                } else {
-                    // Fallback : popup si pas de setupPanel
-                    JOptionPane.showMessageDialog(menuFrame,
-                            "Erreur lors de la connexion réseau:\n" + e.getMessage(),
-                            "Erreur Réseau",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-    }
-
-    /**
      * Lance le jeu en mode réseau
      * 
      * @param isServer   true si serveur, false si client
      * @param host       Adresse du serveur
      * @param port       Port du serveur
      * @param minPlayers Nombre minimum de joueurs pour démarrer
-     * @param serverName Nom du serveur (null pour client)
      */
-    private void startNetworkGame(boolean isServer, String host, int port, int minPlayers, String serverName) {
+    private void startNetworkGame(boolean isServer, String host, int port, int minPlayers) {
         System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║   🌐 MODE MULTIJOUEUR RÉSEAU 🌐      ║");
         System.out.println("╚════════════════════════════════════════╝");
         System.out.println("");
         System.out.println("Type: " + (isServer ? "Serveur" : "Client"));
-        if (serverName != null) {
-            System.out.println("Nom du salon: " + serverName);
-        }
         System.out.println("Adresse: " + host + ":" + port);
         System.out.println("Joueurs minimum: " + minPlayers);
         System.out.println("");
@@ -748,8 +618,7 @@ public class MenuManager {
         SwingUtilities.invokeLater(() -> {
             try {
                 System.out.println("→ Lancement du jeu en mode réseau...");
-                NetworkLiquidWarGame networkGame = new NetworkLiquidWarGame(isServer, host, port, minPlayers,
-                        serverName);
+                NetworkLiquidWarGame networkGame = new NetworkLiquidWarGame(isServer, host, port, minPlayers);
                 networkGame.start();
                 System.out.println("✅ Jeu réseau lancé avec succès !");
             } catch (Exception e) {

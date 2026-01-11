@@ -20,7 +20,7 @@ import fr.uparis.informatique.cpoo5.liquidwar.model.entities.Fighter;
  * Le code est déplacé TEL QUEL sans modification de la logique.
  * 
  * Responsabilités :
- * - Dessin du buffer statique
+ * - Dessin du buffer statique (obstacles et fond)
  * - Rendu des combattants
  * - Rendu des curseurs
  * - Affichage des statistiques
@@ -254,7 +254,7 @@ public class GameRenderer {
             System.out.println(
                     "Zoom appliqué: " + String.format("%.2f", panelWidth / (float) gameBuffer.getWidth()) + "x");
             System.out.println("Map visible: " + (panelWidth >= gameBuffer.getWidth() * 3 ? "OUI" : "PARTIELLE"));
-            System.out.println("==========================================\n");   
+            System.out.println("==========================================\n");
         }
     }
 }

@@ -8,6 +8,9 @@ import javax.imageio.ImageIO;
 
 import fr.uparis.informatique.cpoo5.liquidwar.util.GameLogger;
 
+/**
+ * Chargeur de cartes simplifié pour Liquid War
+ */
 public class MapLoader {
 
     public static int[][] loadMapFromBMP(String path, int width, int height) {
