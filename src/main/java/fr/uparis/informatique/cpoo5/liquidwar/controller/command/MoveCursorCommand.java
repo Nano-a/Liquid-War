@@ -33,3 +33,4 @@ public class MoveCursorCommand implements Command {
         cursor.y = oldPos.y;
     }
 }
+
