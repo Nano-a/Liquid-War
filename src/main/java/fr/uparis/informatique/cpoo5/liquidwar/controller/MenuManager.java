@@ -5,7 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.SwingUtilities;      
 
 import fr.uparis.informatique.cpoo5.liquidwar.config.RenderConfig;
 import fr.uparis.informatique.cpoo5.liquidwar.view.menu.ClientConnectPanel;
@@ -27,9 +27,9 @@ import fr.uparis.informatique.cpoo5.liquidwar.view.menu.TrioConfigMenuPanel;
  */
 public class MenuManager {
 
+    private JPanel cardPanel
     private JFrame menuFrame;
-    private CardLayout cardLayout;
-    private JPanel cardPanel;
+    private CardLayout cardLayout;;
 
     // Les différents menus
     private MainMenuPanel mainMenuPanel;
