@@ -175,36 +175,36 @@ Lance directement le jeu sans passer par les menus.
 │                                                                 │
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │                    VIEW (Vue)                            │  │
-│  │  • GameCanvas (Rendu graphique)                           │  │
-│  │  • GameRenderer (60 FPS)                                  │  │
-│  │  • MenuManager (Menus interactifs)                        │  │
-│  │  • Panels (Menu, Options, Aide)                           │  │
+│  │  • GameCanvas (Rendu graphique)                          │  │
+│  │  • GameRenderer (60 FPS)                                 │  │
+│  │  • MenuManager (Menus interactifs)                       │  │
+│  │  • Panels (Menu, Options, Aide)                          │  │
 │  └──────────────────────────────────────────────────────────┘  │
-│                            ↕                                    │
+│                            ↕                                   │
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │                 CONTROLLER (Contrôleur)                  │  │
 │  │  • LiquidWarGame (Boucle principale)                     │  │
-│  │  • NetworkGameController (Multijoueur)                    │  │
-│  │  • Command Pattern (Historique actions)                    │  │
-│  │  • InputHandler (Gestion entrées)                         │  │
+│  │  • NetworkGameController (Multijoueur)                   │  │
+│  │  • Command Pattern (Historique actions)                  │  │
+│  │  • InputHandler (Gestion entrées)                        │  │
 │  └──────────────────────────────────────────────────────────┘  │
-│                            ↕                                    │
+│                            ↕                                   │
 │  ┌──────────────────────────────────────────────────────────┐  │
-│  │                    MODEL (Modèle)                         │  │
-│  │  • GameState (État du jeu)                                │  │
-│  │  • Fighter (Particules)                                    │  │
-│  │  • Cursor (Curseurs joueurs)                               │  │
-│  │  • GradientEngine (Calcul gradient)                       │  │
-│  │  • CombatEngine (Système de combat)                        │  │
+│  │                    MODEL (Modèle)                        │  │
+│  │  • GameState (État du jeu)                               │  │
+│  │  • Fighter (Particules)                                  │  │
+│  │  • Cursor (Curseurs joueurs)                             │  │
+│  │  • GradientEngine (Calcul gradient)                      │  │
+│  │  • CombatEngine (Système de combat)                      │  │
 │  └──────────────────────────────────────────────────────────┘  │
-│                                                                 │
+│                                                                │
 │  ┌──────────────────────────────────────────────────────────┐  │
-│  │                    SERVICES                                │  │
-│  │  • AIStrategy (IA : Random, Aggressive, Defensive)        │  │
-│  │  • NetworkService (TCP Server/Client)                      │  │
-│  │  • AudioManager (Musique et effets sonores)                │  │
+│  │                    SERVICES                              │  │
+│  │  • AIStrategy (IA : Random, Aggressive, Defensive)       │  │
+│  │  • NetworkService (TCP Server/Client)                    │  │
+│  │  • AudioManager (Musique et effets sonores)              │  │
 │  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────┘
 ```
 
 ### Structure des Packages
